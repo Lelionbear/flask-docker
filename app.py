@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    file = 'count.txt'
+    global file
     try:
         file = open('count.txt', 'r')
         count = int(file.read())
@@ -21,7 +21,7 @@ def index():
         file = open('count.txt', 'w')
         file.write(str(count))
     except Exception as inst:
-        logging.warning('Exception occurred in writefile: %s', inst)
+        print(inst)
     finally:
         file.close()
 
