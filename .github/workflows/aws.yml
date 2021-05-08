@@ -18,7 +18,7 @@ env:
   ECR_REPOSITORY: dev-agalvanalarcon
   ECS_CLUSTER: dev-agalvanalarcon
   ECS_SERVICE: dev-agalvanalarcon
-  ECS_TASK_DEFINITION: dev-agalvanalarcon
+  ECS_TASK_DEFINITION: dev-agalvanalarcon-task
   CONTAINER_NAME: dev-agalvanalarcon
 
 
