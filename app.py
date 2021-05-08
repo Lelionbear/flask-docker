@@ -3,8 +3,7 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 
-@app.route('/')
-def index():
+def get_count():
     global file
     try:
         file = open('count.txt', 'r')
@@ -15,6 +14,11 @@ def index():
     finally:
         file.close()
 
+    return count
+
+
+def update_count():
+    count = get_count()
     count += 1
 
     try:
@@ -24,8 +28,12 @@ def index():
         print(inst)
     finally:
         file.close()
+    return count
 
-    return render_template("index.html", count=count)
+
+@app.route('/')
+def index():
+    return render_template("index.html", count=update_count())
 
 
 if __name__ == '__main__':
