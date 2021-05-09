@@ -1,12 +1,13 @@
 from flask import Flask, render_template
 
 app = Flask(__name__)
+file_name = 'count.txt'
 
 
 def get_count():
     global file
     try:
-        file = open('count.txt', 'r')
+        file = open(file_name, 'r')
         count = int(file.read())
     except Exception as inst:
         print(inst)
@@ -18,11 +19,12 @@ def get_count():
 
 
 def update_count():
+    global file
     count = get_count()
     count += 1
 
     try:
-        file = open('count.txt', 'w')
+        file = open(file_name, 'w')
         file.write(str(count))
     except Exception as inst:
         print(inst)
